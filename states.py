@@ -20,3 +20,4 @@ class AdminStates(StatesGroup):
     waiting_custom_amount = State()
     waiting_new_discount = State()
     waiting_search_user = State()
+    waiting_config_text = State()

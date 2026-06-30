@@ -25,8 +25,8 @@ CARD_HOLDER = _get_env("CARD_HOLDER")
 DATABASE_PATH = _get_env("DATABASE_PATH", required=False, default="database.db")
 
 REQUIRED_CHANNELS = [
-    {"id": "@businesss_vpn", "name": "کانال اصلی", "url": "https://t.me/businesss_vpn"},
-    {"id": "@businesss_etemad", "name": "کانال اعتماد", "url": "https://t.me/businesss_etemad"},
+    {"id": -1003957260685, "name": "کانال اصلی", "url": "https://t.me/businesss_vpn"},
+    {"id": -1003904350377, "name": "کانال اعتماد", "url": "https://t.me/businesss_etemad"},
 ]
 
 VIP_PLANS = {

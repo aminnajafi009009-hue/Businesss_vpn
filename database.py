@@ -134,7 +134,9 @@ def _generate_invite_code() -> str:
             return code
 
 
-def get_user(telegram_id) -> sqlite3.Row | None:
+from typing import Optional
+
+def get_user(telegram_id) -> Optional[sqlite3.Row]:
     cur = get_connection().cursor()
     cur.execute("SELECT * FROM users WHERE telegram_id = ?", (str(telegram_id),))
     return cur.fetchone()

@@ -4,6 +4,8 @@ handlers/start.py
 (/start BVPNXXXXX).
 """
 
+import logging
+
 from aiogram import Router, F, types
 from aiogram.filters import Command, CommandObject
 from aiogram.enums import ChatMemberStatus
@@ -13,6 +15,7 @@ from keyboards import join_channels_keyboard, main_menu
 from config import REQUIRED_CHANNELS
 
 router = Router(name="start")
+logger = logging.getLogger(name)
 
 
 async def check_membership(bot, user_id: int) -> list:
@@ -22,7 +25,8 @@ async def check_membership(bot, user_id: int) -> list:
             member = await bot.get_chat_member(ch["id"], user_id)
             if member.status in (ChatMemberStatus.LEFT, ChatMemberStatus.KICKED, ChatMemberStatus.BANNED):
                 not_joined.append(ch)
-        except Exception:
+        except Exception as e:
+            logger.error(f"check_membership failed for channel {ch['id']}: {e}")
             not_joined.append(ch)
     return not_joined
 

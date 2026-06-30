@@ -132,7 +132,9 @@ def _generate_invite_code() -> str:
         cur.execute("SELECT 1 FROM users WHERE invite_code = ?", (code,))
         if cur.fetchone() is None:
             return code
-    def get_user(telegram_id) -> sqlite3.Row | None:
+
+
+def get_user(telegram_id) -> sqlite3.Row | None:
     cur = get_connection().cursor()
     cur.execute("SELECT * FROM users WHERE telegram_id = ?", (str(telegram_id),))
     return cur.fetchone()

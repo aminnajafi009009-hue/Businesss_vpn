@@ -15,7 +15,7 @@ from keyboards import join_channels_keyboard, main_menu
 from config import REQUIRED_CHANNELS
 
 router = Router(name="start")
-logger = logging.getLogger(name)
+logger = logging.getLogger(__name__)
 
 
 async def check_membership(bot, user_id: int) -> list:

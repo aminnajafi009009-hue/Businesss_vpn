@@ -307,7 +307,9 @@ def sales_since(days: int) -> int:
         (f"-{days} days",),
     )
     return cur.fetchone()["s"]
-  def add_config(user_id: int, plan_name: str, encrypted_config: str, expiry: str | None):
+
+
+def add_config(user_id: int, plan_name: str, encrypted_config: str, expiry: str | None):
     with transaction() as cur:
         cur.execute(
             """INSERT INTO configs (user_id, plan, config, expiry, created_at)
@@ -359,11 +361,6 @@ def get_referral(invited_id: int) -> sqlite3.Row | None:
 
 
 def complete_referral(invited_id: int):
-    """
-    وقتی فرد دعوت‌شده اولین خریدش را انجام داد فراخوانی می‌شود.
-    - فقط رکوردهای status='pending' پردازش می‌شوند (جلوگیری از آزاد شدن دوباره).
-    - مبلغی که موقع ثبت‌نام در locked_wallet معرف قفل شده بود، به wallet او منتقل می‌شود.
-    """
     with transaction() as cur:
         cur.execute(
             "SELECT * FROM referrals WHERE invited_id = ? AND status = 'pending'",
@@ -420,4 +417,4 @@ def get_referral_stats(user_id: int) -> dict:
         "successful_invites": user["successful_invites"],
         "released_amount": released,
         "pending_count": pending_count,
-}
+    }

@@ -112,7 +112,7 @@ def insufficient_balance_keyboard():
         [InlineKeyboardButton(text="💵 شارژ کیف پول", callback_data="wallet")],
         [InlineKeyboardButton(text="🔙 بازگشت", callback_data="plans")],
     ])
-  def admin_panel_menu():
+def admin_panel_menu():
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="📊 آمار", callback_data="admin_stats")],
         [InlineKeyboardButton(text="🔍 جستجوی حرفه‌ای", callback_data="admin_search")],

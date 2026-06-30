@@ -23,7 +23,7 @@ async def check_membership(bot, user_id: int) -> list:
     for ch in REQUIRED_CHANNELS:
         try:
             member = await bot.get_chat_member(ch["id"], user_id)
-            if member.status in (ChatMemberStatus.LEFT, ChatMemberStatus.KICKED, ChatMemberStatus.BANNED):
+            if member.status in (ChatMemberStatus.LEFT, ChatMemberStatus.KICKED):
                 not_joined.append(ch)
         except Exception as e:
             logger.error(f"check_membership failed for channel {ch['id']}: {e}")
